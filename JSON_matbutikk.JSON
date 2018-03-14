@@ -1,0 +1,42 @@
+{
+  "matvarer": {
+    "Litago": {
+      "pris": 20,
+      "kategori": "Meieriprodukt",
+      "ingredienser": [
+        "Melk",
+        "Kakao",
+        "Laktose"
+      ],
+      "bilde" : "Bilder/litago"
+    },
+    "Hamburger": {
+      "pris": 99,
+      "kategori": "Middag",
+      "ingredienser": [
+        "Kjøtt"
+      ],
+      "bilde" : "Bilder/hamburger"
+    },
+    "Lefse": {
+      "pris": 16,
+      "kategori": "Bakevare",
+      "ingredienser": [
+        "Mel",
+        "Sukker",
+        "Kanel"
+      ],
+      "bilde" : "Bilder/lefse"
+    },
+    "Japp": {
+      "pris": 18,
+      "kategori": "Godteri",
+      "ingredienser": [
+        "Sjokolade",
+        "Sukker",
+        "Karamell"
+      ],
+      "bilde" : "Bilde/japp"
+    }
+  }
+}

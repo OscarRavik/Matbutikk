@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrering</title>
+    <link rel="stylesheet" href="registrering.css">
+</head>
+<body>
+
+<nav id="navbar">
+
+
+
+
+
+</nav>
+
+
+<main id="kvittering">
+    <h1>Registrering av kunde</h1>
+<form action="../kvittering/kvittering.html" id="skjemato">
+    <label for="navn">Navn:</label>
+    <input type="text" id="navn" required>
+    <br>
+    <label for="adresse">Adresse:</label>
+    <input type="text" id="adresse" required>
+    <br>
+    <label for="kortnummer">Kortnummer:</label>
+    <input type="number" id="kortnummer" placeholder="1234 5678 1234 5678" required>
+    <br>
+    <label for="cvc">Utløpsdato/CVC</label>
+    <input type="number" id="cvc" placeholder="0923 753" required>
+    <br>
+    <button id="bestill">Registrer</button>
+</form>
+
+    <!--
+    <p>Allerede registrert deg før? Finn navnet ditt under: </p>
+    <form action="../kvittering/kvittering.html" id="sisteSkjema">
+        <select name="kunder" id="kunder">
+
+        </select>
+        <button>Bestill</button>
+    </form>
+    -->
+</main>
+
+
+
+<script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAvfNDE6GZYwOlPqzmzXDSuige3NF1USEA",
+        authDomain: "innlevering-72438.firebaseapp.com",
+        databaseURL: "https://innlevering-72438.firebaseio.com",
+        projectId: "innlevering-72438",
+        storageBucket: "innlevering-72438.appspot.com",
+        messagingSenderId: "65734299464"
+    };
+    firebase.initializeApp(config);
+</script>
+
+<script>
+
+    var navnInp = document.getElementById("navn");
+    var adresseInp = document.getElementById("adresse");
+    var kortNummerInp = document.getElementById("kortnummer");
+    var cvcInp = document.getElementById("cvc");
+    var bestillKnappEl = document.getElementById("bestill");
+    var registerSkjema = document.getElementById("skjemato");
+    var selectKundeEl = document.getElementById("kunder");
+    var inputVarer = document.getElementById("inputVare");
+    var bestillSkjema = document.getElementById("sisteSkjema");
+    var navBar = document.getElementById("navbar");
+
+    var database = firebase.database();
+    var kundeinfo = database.ref("kundeinfo");
+    var handlekurv = database.ref("Handlekurv");
+    var ordreKontakt = database.ref("ordreKonaktinfo");
+
+    function registrerInfo (event){
+
+
+        var navn = navnInp.value;
+        var adresse = adresseInp.value;
+        var kortNummer = kortNummerInp.value;
+        var cvc = cvcInp.value;
+
+
+
+        nyInfo = {
+            "navn" : navn,
+            "Adresse": adresse,
+            "Kortnummer": kortNummer,
+            "cvc": cvc
+        };
+
+        ordreKontakt.push(nyInfo);
+        console.log("Halla");
+
+
+  /*  function hentKunder(snapshot) {
+        var navn = snapshot.key;
+        var informasjon = snapshot.val();
+
+        selectKundeEl.innerHTML += `
+        <option value="${navn}">
+        ${navn}
+        </option>
+        `;
+*/
+    }
+
+ /*   function leggTilInfoTilOrdreEN (event){
+        event.preventDefault();
+        var navn = navnInp.value;
+        var adresse = adresseInp.value;
+        var kortNummer = kortNummerInp.value;
+        var cvc = cvcInp.value;
+
+     //   var vare = database.vare.limitto
+    //    var handlekurvDatabase = database[vare];
+
+       var nyOrdreen = {
+            "navn" : navn,
+            "adresse" : adresse,
+            "kortnummer" : kortNummer,
+            "cvc" : cvc
+    //        "vare" : handlekurvDatabase.vare,
+    //        "pris" : handlekurvDatabase.pris,
+    //        "bile" : handlekurvDatabase.bilde
+        };
+
+        ordreKontakt.push(nyOrdreen);
+
+    }
+    */
+
+    function visFullHandlekurv(snapshot) {
+
+       var vareNokler = snapshot.val();
+
+       navBar.innerHTML = `
+           <a href="../Index.html">Hjem</a>
+    <img src="../Bilder/logo${vareNokler.vare}.png" alt="logo">
+    <a href="../kvittering/kvittering.html">Siste ordre</a>
+       `
+    }
+  //  registerSkjema.onsubmit = leggTilInfoTilOrdreEN;
+    registerSkjema.onsubmit = registrerInfo;
+  //  kundeinfo.on("child_added", hentKunder);
+    handlekurv.on("child_added", visFullHandlekurv);
+
+
+</script>
+</body>
+</html>

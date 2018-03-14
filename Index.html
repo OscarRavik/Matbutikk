@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="no">
+<link rel="stylesheet" href="generel.css">
+<head>
+    <meta charset="UTF-8">
+    <title>MatNett</title>
+</head>
+<body>
+
+<nav>
+
+    <a href="Index.html">Hjem</a>
+    <img src="Bilder/logo.png" alt="logo">
+    <a href="kvittering/kvittering.html">Siste ordre</a>
+
+</nav>
+
+<main>
+
+    <h1>Varer</h1>
+
+    <p id="input"></p>
+
+    <form action="registrering/reigstrering.html" id="skjema">
+            <div class="senter">
+                <select name="varer" id="varer">
+                </select>
+            </div>
+            <div class="senter">
+        <button id="knapp">Legg til i handlevogn</button>
+            </div>
+    </form>
+
+</main>
+
+
+
+
+<script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAvfNDE6GZYwOlPqzmzXDSuige3NF1USEA",
+        authDomain: "innlevering-72438.firebaseapp.com",
+        databaseURL: "https://innlevering-72438.firebaseio.com",
+        projectId: "innlevering-72438",
+        storageBucket: "innlevering-72438.appspot.com",
+        messagingSenderId: "65734299464"
+    };
+    firebase.initializeApp(config);
+</script>
+
+<script>
+
+
+    var skjemaEl = document.getElementById("skjema");
+    //var varerEl = document.getElementsByClassName("checkbox");
+    //var antallEl = document.getElementsByClassName("select");
+    // var knappEl = document.getElementById("knapp");
+    var radioEl = document.querySelector('input[name="matVarer"]:checked');
+    var selectVare = document.getElementById("varer");
+    var inputEl = document.getElementById("input");
+
+
+    var database = firebase.database();
+    var matVarer = database.ref("matvarer");
+    var Handlekurv = database.ref("Handlekurv");
+
+    var LokalVareInfo = {};
+    
+
+   function visVarer(snapshot) {
+        var vare = snapshot.val();
+        var navn = snapshot.key;
+
+        inputEl.innerHTML += `
+        <div>
+        <img src="${vare.bilde}" alt="vare">
+        <h2>${navn}</h2>
+        <h3>Pris: ${vare.pris}</h3>
+        <h4>Ingredienser: <br> ${vare.ingredienser}</h4>
+
+        </div>
+        `
+
+        console.log("heilo");
+
+/*
+        skjemaEl.innerHTML += `
+
+<input type="radio" value="${navn}" id="${navn}" name="matVarer" class="radio">
+<label for="${navn}">
+<div>
+        <img src="${vare.bilde}" alt="bilde">
+        <h2>${navn}</h2>
+        <h3>Pris: ${vare.pris}</h3>
+        <h4>Ingredienser: <br>${vare.ingredienser}</h4>
+        <br>
+        <img src="Bilder/tom_checkbox.png" alt="check" class="check">
+        </div>
+</label>
+
+
+<!--
+<div>
+<label for="${navn}selector">Antall:</label>
+<select name="${navn}selector" id="${navn}selector" class="select">
+<option value="0">0</option>
+<option value="1" selected>1</option>
+<option value="1">2</option>
+<option value="1">3</option>
+<option value="1">4</option>
+<option value="1">5</option>
+</select>
+
+</div>
+-->
+
+
+        `
+*/
+       LokalVareInfo[navn] = vare;
+    }
+
+    function hentVarer(snapshot){
+        var vareNavn = snapshot.key;
+        var vareInfo = snapshot.val();
+
+        selectVare.innerHTML +=
+            `
+            <option value="${vareNavn}">${vareNavn} </option>
+            `
+
+        LokalVareInfo[vareNavn] = vareInfo;
+
+    }
+
+
+    function registrerVarer(event) {
+
+
+
+            var vare = selectVare.value;
+            var vareInformasjon = LokalVareInfo[vare];
+
+
+        var nyHandlekurv =
+            {
+                "vare" : vare,
+                "pris" : vareInformasjon.pris,
+                "bilde" : vareInformasjon.bilde
+            };
+
+        Handlekurv.push(nyHandlekurv);
+
+
+    console.log("halla styggen");
+
+    }
+
+
+    matVarer.on("child_added", hentVarer);
+    matVarer.on("child_added", visVarer);
+    skjemaEl.onsubmit = registrerVarer;
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kvittering</title>
+    <link rel="stylesheet" href="kvittering.css">
+</head>
+<body>
+
+<nav id="navbar">
+
+
+
+</nav>
+
+<main>
+
+    <h1>Ordren din har blitt registrert</h1>
+
+
+
+
+<article id="vareInfo">
+
+</article>
+
+<article id="kontaktInfo">
+
+</article>
+
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAvfNDE6GZYwOlPqzmzXDSuige3NF1USEA",
+        authDomain: "innlevering-72438.firebaseapp.com",
+        databaseURL: "https://innlevering-72438.firebaseio.com",
+        projectId: "innlevering-72438",
+        storageBucket: "innlevering-72438.appspot.com",
+        messagingSenderId: "65734299464"
+    };
+    firebase.initializeApp(config);
+</script>
+
+<script>
+
+    var kontaktInfoInp = document.getElementById("kontaktInfo");
+    var vareInfoInp = document.getElementById("vareInfo");
+    var navBar = document.getElementById("navbar");
+
+    var database = firebase.database();
+    var Handlekurv = database.ref("Handlekurv");
+    var kundeinfo = database.ref("kundeinfo");
+    var ordreKontakt = database.ref("ordreKonaktinfo");
+
+
+    function visKontaktinfo(snapshot){
+        var nyInfo = snapshot.val();
+
+
+        kontaktInfoInp.innerHTML = `
+        <h3>Kontaktinfo:</h3>
+        Kunde: ${nyInfo.navn} <br> Adresse: ${nyInfo.Adresse} <br> Kortnummer: ${nyInfo.Kortnummer} <br> CVC/Utløpsdato: ${nyInfo.cvc}
+        `
+
+        console.log("Benno er digg");
+
+
+    }
+    function visVareinfo(snapshot){
+        var nyVare = snapshot.val();
+
+        vareInfoInp.innerHTML = `
+        <h2>${nyVare.vare}</h2>
+        <h3>Pris: ${nyVare.pris}</h3>
+         <img src="../${nyVare.bilde}" alt="bilde" id="vareBilde">
+
+        `
+
+    }
+
+    function visFullHandlekurv(snapshot) {
+
+        var vareNoklerto = snapshot.val();
+
+        navBar.innerHTML = `
+           <a href="../Index.html">Hjem</a>
+    <img src="../Bilder/logo${vareNoklerto.vare}.png" alt="logo">
+    <a href="kvittering.html">Siste ordre</a>
+       `
+    }
+
+    ordreKontakt.on("child_added", visKontaktinfo);
+    Handlekurv.on("child_added", visVareinfo);
+    Handlekurv.on("child_added", visFullHandlekurv);
+
+
+</script>
+
+</body>
+</html>

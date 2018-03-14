@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Konfirmasjon</title>
+</head>
+<body>
+
+<form action="" id="sisteSkjema">
+    <select name="kunder" id="kunder">
+
+    </select>
+    <button>Bestill</button>
+</form>
+<p id="inputVare">
+
+</p>
+
+<script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAvfNDE6GZYwOlPqzmzXDSuige3NF1USEA",
+        authDomain: "innlevering-72438.firebaseapp.com",
+        databaseURL: "https://innlevering-72438.firebaseio.com",
+        projectId: "innlevering-72438",
+        storageBucket: "innlevering-72438.appspot.com",
+        messagingSenderId: "65734299464"
+    };
+    firebase.initializeApp(config);
+</script>
+
+<script>
+
+    var selectKundeEl = document.getElementById("kunder");
+    var inputVarer = document.getElementById("inputVare");
+    var bestillSkjema = document.getElementById("sisteSkjema");
+
+    var database = firebase.database();
+    var kundeinfo = database.ref("kundeinfo");
+    var Handlekurv = database.ref("Handlekurv");
+    var bestillinger = database.ref("bestillinger");
+
+    function hentKunder(snapshot) {
+        var navn = snapshot.key;
+        var informasjon = snapshot.val();
+
+        selectKundeEl.innerHTML += `
+        <option value="${navn}">
+        ${navn}
+        </option>
+        `;
+
+    }
+
+    function hentHandlevogn(snapshot) {
+        var vareNavn = snapshot.key;
+        var vareInfo = snapshot.val();
+
+        inputVarer.innerHTML =
+            `
+             Vare: ${vareInfo.vare}
+            `;
+
+
+        console.log("Benno er diggg");
+    }
+
+    function fullforHandel (event){
+        event.preventDefault();
+
+
+        var kvittering = {
+            "Kunde" : selectKundeEl.value,
+        };
+
+        console.log("halla kjekken");
+
+        bestillinger.push(kvittering);
+
+    }
+
+    kundeinfo.on("child_added", hentKunder);
+    Handlekurv.on("child_added", hentHandlevogn);
+    bestillSkjema.onsubmit = fullforHandel;
+
+
+</script>
+
+</body>
+</html>
