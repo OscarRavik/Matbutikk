@@ -86,12 +86,12 @@
         var vareNoklerto = snapshot.val();
 
         navBar.innerHTML = `
-           <a href="../Index.html">Hjem</a>
+           <a href="../index.html">Hjem</a>
     <img src="../Bilder/logo${vareNoklerto.vare}.png" alt="logo">
     <a href="kvittering.html">Siste ordre</a>
        `
     }
-
+//:)
     ordreKontakt.on("child_added", visKontaktinfo);
     Handlekurv.on("child_added", visVareinfo);
     Handlekurv.on("child_added", visFullHandlekurv);
