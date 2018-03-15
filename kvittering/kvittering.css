@@ -82,38 +82,108 @@ article {
 footer {
     margin: auto;
     width: 100%;
-    height: 100px;
+    height: 200px;
 }
 
 footer div {
     position: relative;
     overflow: hidden;
     width: 100%;
-    height: 100px;
+    height: 200px;
     margin: auto;
 }
 
 footer img{
     position: absolute;
     left: 0;
-    width: 100px;
-    height: 100px;
+    width: 180px;
+    height: 200px;
     display: block;
     top: 0;
 
 
-    animation: ani 10s infinite;
+    animation: ani 8s infinite;
 }
 
 
 @keyframes ani {
     0% {
         left: 25px;
+        transform: scaleX(1);
+        content: url("../Bilder/mattiHandelEn.png");
+    }
+    5% {
+        content: url("../Bilder/mattiHandelToEn.png");
+    }
+    10% {
+        content: url("../Bilder/mattiHandelEn.png");
+    }
+    15% {
+        content: url("../Bilder/mattiHandelToEn.png");
+    }
+    20% {
+        content: url("../Bilder/mattiHandelEn.png");
+    }
+    25% {
+        content: url("../Bilder/mattiHandelToEn.png");
+    }
+    30% {
+        content: url("../Bilder/mattiHandelEn.png");
+    }
+    35% {
+        content: url("../Bilder/mattiHandelToEn.png");
+    }
+    40% {
+        content: url("../Bilder/mattiHandelEn.png");
+    }
+    45% {
+        content: url("../Bilder/mattiHandelToEn.png");
+    }
+
+
+    49% {
+        transform: scaleX(1);
+        content: url("../Bilder/mattiHandelEn.png");
     }
     50% {
-        left: calc( 100% - 125px);
+        left: calc( 100% - 225px);
+        transform: scaleX(-1);
+        content: url("../Bilder/mattiHandelTo.png");
+    }
+    55% {
+        content: url("../Bilder/mattiHandelEnTo.png");
+    }
+    60% {
+        content: url("../Bilder/mattiHandelTo.png");
+    }
+    65% {
+        content: url("../Bilder/mattiHandelEnTo.png");
+    }
+    70% {
+        content: url("../Bilder/mattiHandelTo.png");
+    }
+    75% {
+        content: url("../Bilder/mattiHandelEnTo.png");
+    }
+    80% {
+        content: url("../Bilder/mattiHandelTo.png");
+    }
+    85% {
+        content: url("../Bilder/mattiHandelEnTo.png");
+    }
+    90% {
+        content: url("../Bilder/mattiHandelTo.png");
+    }
+    95% {
+        content: url("../Bilder/mattiHandelEnTo.png");
+    }
+    99% {
+        transform: scaleX(-1);
+        content: url("../Bilder/mattiHandelTo.png");
     }
     100% {
         left: 25px;
+        transform: scaleX(1);
+        content: url("../Bilder/mattiHandelEn.png");
     }
 }
