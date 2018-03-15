@@ -142,3 +142,58 @@ main [type=radio]:checked + label .check{
         grid-template-columns: 1fr;
     }
 }
+
+
+footer {
+    margin: auto;
+    width: 100%;
+    height: 200px;
+}
+
+footer div {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 200px;
+    margin: auto;
+}
+
+footer img{
+    position: absolute;
+    left: 0;
+    width: 180px;
+    height: 200px;
+    display: block;
+    top: 0;
+
+
+    animation: ani 8s infinite, flip 4s infinite ;
+}
+
+
+@keyframes ani {
+    0% {
+        left: 25px;
+        transform: scaleX(1);
+        content: url("Bilder/mattiHandelEn.png");
+    }
+    49% {
+        transform: scaleX(1);
+        content: url("Bilder/mattiHandelEn.png");
+    }
+    50% {
+        left: calc( 100% - 225px);
+        transform: scaleX(-1);
+        content: url("Bilder/mattiHandelTo.png");
+    }
+    99% {
+        transform: scaleX(-1);
+        content: url("Bilder/mattiHandelTo.png");
+    }
+    100% {
+        left: 25px;
+        transform: scaleX(1);
+        content: url("Bilder/mattiHandelEn.png");
+    }
+}
+
