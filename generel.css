@@ -177,6 +177,35 @@ footer img{
         transform: scaleX(1);
         content: url("Bilder/mattiHandelEn.png");
     }
+    5% {
+        content: url("Bilder/mattiHandelToEn.png");
+    }
+    10% {
+        content: url("Bilder/mattiHandelEn.png");
+    }
+    15% {
+        content: url("Bilder/mattiHandelToEn.png");
+    }
+    20% {
+        content: url("Bilder/mattiHandelEn.png");
+    }
+    25% {
+        content: url("Bilder/mattiHandelToEn.png");
+    }
+    30% {
+        content: url("Bilder/mattiHandelEn.png");
+    }
+    35% {
+        content: url("Bilder/mattiHandelToEn.png");
+    }
+    40% {
+        content: url("Bilder/mattiHandelEn.png");
+    }
+    45% {
+        content: url("Bilder/mattiHandelToEn.png");
+    }
+
+
     49% {
         transform: scaleX(1);
         content: url("Bilder/mattiHandelEn.png");
@@ -185,6 +214,33 @@ footer img{
         left: calc( 100% - 225px);
         transform: scaleX(-1);
         content: url("Bilder/mattiHandelTo.png");
+    }
+    55% {
+        content: url("Bilder/mattiHandelEnTo.png");
+    }
+    60% {
+        content: url("Bilder/mattiHandelTo.png");
+    }
+    65% {
+        content: url("Bilder/mattiHandelEnTo.png");
+    }
+    70% {
+        content: url("Bilder/mattiHandelTo.png");
+    }
+    75% {
+        content: url("Bilder/mattiHandelEnTo.png");
+    }
+    80% {
+        content: url("Bilder/mattiHandelTo.png");
+    }
+    85% {
+        content: url("Bilder/mattiHandelEnTo.png");
+    }
+    90% {
+        content: url("Bilder/mattiHandelTo.png");
+    }
+    95% {
+        content: url("Bilder/mattiHandelEnTo.png");
     }
     99% {
         transform: scaleX(-1);
