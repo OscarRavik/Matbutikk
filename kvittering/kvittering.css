@@ -93,7 +93,7 @@ footer div {
     margin: auto;
 }
 
-footer img{
+footer img:first-child{
     position: absolute;
     left: 0;
     width: 180px;
@@ -104,7 +104,20 @@ footer img{
 
     animation: ani 8s infinite;
 }
-
+#shop {
+    left: calc(100% - 200px);
+    top: 0;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+}
+#hus {
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+}
 
 @keyframes ani {
     0% {
