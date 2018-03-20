@@ -2,7 +2,7 @@
   "matvarer": {
     "Litago": {
       "pris": 20,
-      "kategori": "Meieriprodukt",
+      "kategori": "Drikke",
       "ingredienser": [
         "Melk",
         "Kakao",
@@ -55,6 +55,26 @@
         "Fargestoffer"
       ],
       "bilde" : "Bilder/skittles.jpg"
+    },
+    "Kebab": {
+      "pris": 135,
+      "kategori": "Middag",
+      "ingredienser": [
+        "Kjøtt",
+        "Gluten",
+        "Saus"
+      ],
+      "bilde" : "Bilder/kebab.png"
+    },
+    "MountainDew": {
+      "pris": 22,
+      "kategori": "Drikke",
+      "ingredienser": [
+        "Sukker",
+        "Koffein",
+        "Energi"
+      ],
+      "bilde" : "Bilder/mountainDew.png"
     }
   }
 }

@@ -20,8 +20,10 @@
     <h1>Varer</h1>
 
     <div id="knapper">
-        <button onclick="visSnack()">Snacks</button>
         <button onclick="visAlleVarer()">Alle varer</button>
+        <button onclick="visSnack()">Snacks</button>
+        <button onclick="visDrikke()">Drikke</button>
+        <button onclick="visMiddag()">Middag</button>
     </div>
 
     <p id="input"></p>
@@ -153,6 +155,7 @@
 
 
 
+
             var vare = selectVare.value;
             var vareInformasjon = LokalVareInfo[vare];
 
@@ -179,9 +182,28 @@
             .on("child_added", visVarer);
     }
 
+    function visMiddag() {
+        inputEl.innerHTML = "";
+        matVarer
+            .orderByChild("kategori")
+            .equalTo("Middag")
+            .on("child_added", visVarer);
+    }
+
+    function visDrikke() {
+        inputEl.innerHTML = "";
+        matVarer
+            .orderByChild("kategori")
+            .equalTo("Drikke")
+            .on("child_added", visVarer);
+
+
+    }
+
     function visAlleVarer() {
         inputEl.innerHTML = "";
         matVarer
+            .orderByChild("kategori")
             .on("child_added", visVarer);
     }
 
@@ -189,7 +211,7 @@
 
 
     matVarer.on("child_added", hentVarer);
-    matVarer.on("child_added", visVarer);
+    document.onload = visAlleVarer();
     skjemaEl.onsubmit = registrerVarer;
 
 
