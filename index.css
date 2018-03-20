@@ -49,6 +49,15 @@ main div {
     padding: 20px;
 }
 
+main #knapper{
+    display: flex;
+    justify-content: space-evenly;
+}
+main #knapper button{
+    width: 80px;
+    height: 40px;
+}
+
 h1  {
     text-align: center;
     font-size: 50px;

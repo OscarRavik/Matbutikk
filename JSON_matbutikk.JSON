@@ -8,7 +8,7 @@
         "Kakao",
         "Laktose"
       ],
-      "bilde" : "Bilder/litago"
+      "bilde" : "Bilder/litago.png"
     },
     "Hamburger": {
       "pris": 99,
@@ -16,27 +16,45 @@
       "ingredienser": [
         "Kjøtt"
       ],
-      "bilde" : "Bilder/hamburger"
+      "bilde" : "Bilder/hamburger.png"
     },
     "Lefse": {
       "pris": 16,
-      "kategori": "Bakevare",
+      "kategori": "Snack",
       "ingredienser": [
         "Mel",
         "Sukker",
         "Kanel"
       ],
-      "bilde" : "Bilder/lefse"
+      "bilde" : "Bilder/lefse.png"
     },
     "Japp": {
       "pris": 18,
-      "kategori": "Godteri",
+      "kategori": "Snack",
       "ingredienser": [
         "Sjokolade",
         "Sukker",
         "Karamell"
       ],
-      "bilde" : "Bilde/japp"
+      "bilde" : "Bilder/japp.png"
+    },
+    "Banan": {
+      "pris": 5,
+      "kategori": "Snack",
+      "ingredienser": [
+        "Banan"
+      ],
+      "bilde" : "Bilder/banan.png"
+    },
+    "Skittles": {
+      "pris": 23,
+      "kategori": "Snack",
+      "ingredienser": [
+        "Sukker",
+        "Gluten",
+        "Fargestoffer"
+      ],
+      "bilde" : "Bilder/skittles.jpg"
     }
   }
 }

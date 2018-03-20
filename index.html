@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="no">
-<link rel="stylesheet" href="generel.css">
+<link rel="stylesheet" href="index.css">
 <head>
     <meta charset="UTF-8">
     <title>MatNett</title>
@@ -18,6 +18,11 @@
 <main>
 
     <h1>Varer</h1>
+
+    <div id="knapper">
+        <button onclick="visSnack()">Snacks</button>
+        <button onclick="visAlleVarer()">Alle varer</button>
+    </div>
 
     <p id="input"></p>
 
@@ -165,6 +170,22 @@
     console.log("halla styggen");
 
     }
+
+    function visSnack() {
+        inputEl.innerHTML = "";
+        matVarer
+            .orderByChild("kategori")
+            .equalTo("Snack")
+            .on("child_added", visVarer);
+    }
+
+    function visAlleVarer() {
+        inputEl.innerHTML = "";
+        matVarer
+            .on("child_added", visVarer);
+    }
+
+
 
 
     matVarer.on("child_added", hentVarer);
