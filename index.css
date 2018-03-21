@@ -54,8 +54,8 @@ main #knapper{
     justify-content: space-evenly;
 }
 main #knapper button{
-    width: 80px;
-    height: 40px;
+    flex-grow: 1;
+    height: 50px;
 }
 
 h1  {

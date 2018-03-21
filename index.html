@@ -20,7 +20,8 @@
     <h1>Varer</h1>
 
     <div id="knapper">
-        <button onclick="visAlleVarer()">Alle varer</button>
+        <button onclick="visAlleVarer()">Alle varer etter kategori</button>
+        <button onclick="visPris()">Alle varer etter pris</button>
         <button onclick="visSnack()">Snacks</button>
         <button onclick="visDrikke()">Drikke</button>
         <button onclick="visMiddag()">Middag</button>
@@ -204,6 +205,13 @@
         inputEl.innerHTML = "";
         matVarer
             .orderByChild("kategori")
+            .on("child_added", visVarer);
+    }
+
+    function visPris() {
+        inputEl.innerHTML = "";
+        matVarer
+            .orderByChild("pris")
             .on("child_added", visVarer);
     }
 
