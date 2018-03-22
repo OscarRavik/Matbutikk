@@ -41,6 +41,7 @@
 
 </main>
 
+<!--
 <footer>
     <div>
     <img src="Bilder/mattiHandelEn.png" alt="full handlevogn">
@@ -48,7 +49,7 @@
         <img src="Bilder/hus.png" alt="hus" id="hus">
     </div>
 </footer>
-
+-->
 
 
 <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
@@ -177,42 +178,66 @@
 
     function visSnack() {
         inputEl.innerHTML = "";
+        selectVare.innerHTML = "";
         matVarer
             .orderByChild("kategori")
             .equalTo("Snack")
             .on("child_added", visVarer);
+        matVarer
+            .orderByChild("kategori")
+            .equalTo("Snack")
+            .on("child_added", hentVarer);
     }
 
     function visMiddag() {
         inputEl.innerHTML = "";
+        selectVare.innerHTML = "";
         matVarer
             .orderByChild("kategori")
             .equalTo("Middag")
             .on("child_added", visVarer);
+        matVarer
+            .orderByChild("kategori")
+            .equalTo("Middag")
+            .on("child_added", hentVarer);
     }
 
     function visDrikke() {
         inputEl.innerHTML = "";
+        selectVare.innerHTML = "";
         matVarer
             .orderByChild("kategori")
             .equalTo("Drikke")
             .on("child_added", visVarer);
+        matVarer
+            .orderByChild("kategori")
+            .equalTo("Drikke")
+            .on("child_added", hentVarer);
+
 
 
     }
 
     function visAlleVarer() {
         inputEl.innerHTML = "";
+        selectVare.innerHTML = "";
         matVarer
             .orderByChild("kategori")
             .on("child_added", visVarer);
+        matVarer
+            .orderByChild("kategori")
+            .on("child_added", hentVarer);
     }
 
     function visPris() {
         inputEl.innerHTML = "";
+        selectVare.innerHTML = "";
         matVarer
             .orderByChild("pris")
             .on("child_added", visVarer);
+        matVarer
+            .orderByChild("pris")
+            .on("child_added", hentVarer);
     }
 
 

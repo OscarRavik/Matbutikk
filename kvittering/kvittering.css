@@ -48,11 +48,12 @@ h1  {
 main {
     background-color: lightgray;
     height: auto;
-    padding: 40px;
+    padding: 40px 40px 0 40px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     width: 800px;
     margin: auto;
+
 
 }
 
